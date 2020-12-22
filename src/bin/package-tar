@@ -1,0 +1,23 @@
+#!/bin/sh
+
+set -e
+set -u
+
+PROJECT=$(_project)
+TARGET=$PROJECT/target
+DIST=$1
+
+echo "--- Package $DIST"
+
+# Prepare folder
+mkdir -p $TARGET/pkg
+test -e $TARGET/pkg/$DIST.tar.gz && rm -rf $TARGET/pkg/$DIST.tar.gz
+
+# Create tar
+cd $PROJECT/target/dist/$DIST
+tar rf $TARGET/pkg/$DIST.tar *
+
+# Compress tar
+gzip -9 $TARGET/pkg/$DIST.tar
+
+echo
