@@ -4,7 +4,7 @@ set -e
 set -u
 
 
-VERSION=${JRUBY_VERSION:-"9.2.13.0"}
+VERSION=${JRUBY_VERSION:-"9.2.14.0"}
 
 # Download
 download jruby-dist-${VERSION}-bin.zip \
