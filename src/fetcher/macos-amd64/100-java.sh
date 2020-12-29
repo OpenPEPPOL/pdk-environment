@@ -4,11 +4,15 @@ set -e
 set -u
 
 
-# maxos64
-mkdir -p $DIST/lib/corretto
+VERSION=${JAVA_VERSION:-"8u275-b01"}
 
-download amazon-corretto-8-x64-macos-jdk.tar.gz \
-  https://corretto.aws/downloads/latest/amazon-corretto-8-x64-macos-jdk.tar.gz
+# Download
+download adoptopenjdk-x64-mac-jre-${VERSION}.tar.gz \
+  https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk${VERSION}/OpenJDK8U-jre_x64_mac_hotspot_$(echo $VERSION | sed "s:\-::g").tar.gz
 
-tar -zxf $TMP/amazon-corretto-8-x64-macos-jdk.tar.gz --strip 3 -C $DIST/lib/corretto
-rm -f $DIST/lib/corretto/libjli.dylib
+# Prepare folder
+mkdir -p $DIST/lib/adoptopenjdk
+
+# Unzip content
+tar -zxf $TMP/adoptopenjdk-x64-mac-jre-${VERSION}.tar.gz --strip 3 -C $DIST/lib/adoptopenjdk
+rm -f $DIST/lib/adoptopenjdk/libjli.dylib

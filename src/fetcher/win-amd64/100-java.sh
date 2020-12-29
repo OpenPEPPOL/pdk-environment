@@ -4,13 +4,17 @@ set -e
 set -u
 
 
-# win64
+VERSION=${JAVA_VERSION:-"8u275-b01"}
+
+# Download
+download adoptopenjdk-x64-windows-jre-${VERSION}.zip \
+  https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk${VERSION}/OpenJDK8U-jre_x64_windows_hotspot_$(echo $VERSION | sed "s:\-::g").zip
+
+
+# Prepare folder
 mkdir -p $DIST/lib
+test ! -e $DIST/lib/adoptopenjdk || rm -rf $DIST/lib/adoptopenjdk
 
-download amazon-corretto-8-x64-windows-jre.zip \
-  https://corretto.aws/downloads/latest/amazon-corretto-8-x64-windows-jre.zip
-
-test ! -e $DIST/lib/corretto || rm -rf $DIST/lib/corretto
-
-unzip -qo $TMP/amazon-corretto-8-x64-windows-jre.zip -d $DIST/lib
-mv $DIST/lib/jre8 $DIST/lib/corretto
+# Unzip content
+unzip -qo $TMP/adoptopenjdk-x64-windows-jre-${VERSION}.zip -d $DIST/lib
+mv $DIST/lib/jdk${VERSION}-jre $DIST/lib/adoptopenjdk
