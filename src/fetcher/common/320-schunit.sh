@@ -3,18 +3,14 @@
 set -e
 set -u
 
-# TODO Stop using Docker image
+VERSION=${SCHUNIT_VERSION:-"0.1.0"}
 
-VERSION=${SCHUNIT_VERSION:-edge}
+# Download
+download schunit-core-${VERSION}-dist.tar.gz \
+  https://github.com/schunit/schunit/releases/download/v${VERSION}/schunit-core-${VERSION}-dist.tar.gz
 
-docker run --rm -i \
-    -v $DIST/lib:/work \
-    --entrypoint cp \
-    schunit/schunit:${VERSION} \
-    -r /usr/lib/schunit /work
+# Prepare folder
+mkdir -p $DIST/lib/schunit
 
-docker run --rm -i \
-    -v $DIST/lib:/work \
-    --entrypoint chown \
-    schunit/schunit:${VERSION} \
-    -R $(id -u).$(id -g) schunit
+# Unzip content
+tar xzf $TMP/schunit-core-${VERSION}-dist.tar.gz -C $DIST/lib/schunit

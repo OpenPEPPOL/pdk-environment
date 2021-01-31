@@ -4,7 +4,7 @@ set -e
 set -u
 
 
-VERSION=${JAVA_VERSION:-"8u275-b01"}
+VERSION=${JAVA_VERSION:-"8u282-b08"}
 
 # Download
 download adoptopenjdk-x64-windows-jre-${VERSION}.zip \

@@ -4,7 +4,7 @@ set -e
 set -u
 
 
-VERSION=${HUGO_VERSION:-"0.79.1"}
+VERSION=${HUGO_VERSION:-"0.80.0"}
 
 # MacOS
 mkdir -p $DIST/lib/hugo
