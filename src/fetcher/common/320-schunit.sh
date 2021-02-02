@@ -3,7 +3,7 @@
 set -e
 set -u
 
-VERSION=${SCHUNIT_VERSION:-"0.2.0"}
+VERSION=${SCHUNIT_VERSION:-"0.2.1"}
 
 # Download
 download schunit-cli-${VERSION}-dist.tar.gz \
