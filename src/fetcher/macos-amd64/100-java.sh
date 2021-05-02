@@ -4,7 +4,7 @@ set -e
 set -u
 
 
-VERSION=${JAVA_VERSION:-"8u282-b08"}
+VERSION=${JAVA_VERSION:-"8u292-b10"}
 
 # Download
 download adoptopenjdk-x64-mac-jre-${VERSION}.tar.gz \
