@@ -4,11 +4,11 @@ set -e
 set -u
 
 
-VERSION=${JAVA_VERSION:-"8u292-b10"}
+VERSION=${JAVA_VERSION:-"8u302-b08"}
 
 # Download
 download adoptopenjdk-x64-mac-jre-${VERSION}.tar.gz \
-  https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk${VERSION}/OpenJDK8U-jre_x64_mac_hotspot_$(echo $VERSION | sed "s:\-::g").tar.gz
+  https://github.com/adoptium/temurin8-binaries/releases/download/jdk${VERSION}/OpenJDK8U-jre_x64_mac_hotspot_$(echo $VERSION | sed "s:\-::g").tar.gz
 
 # Prepare folder
 mkdir -p $DIST/lib/adoptopenjdk

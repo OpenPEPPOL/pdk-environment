@@ -4,7 +4,7 @@ set -e
 set -u
 
 
-VERSION=${HUGO_VERSION:-"0.83.1"}
+VERSION=${HUGO_VERSION:-"0.88.1"}
 
 # Win64
 mkdir -p $DIST/lib/hugo
