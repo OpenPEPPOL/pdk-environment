@@ -24,9 +24,8 @@ for arch in $@ common; do
     for fetcher in $(ls $PROJECT/src/fetcher/$arch/*.sh); do
       name=$(echo $fetcher | sed 's:\.sh$::')
 
-      echo "--- Running $name"
+      echo "* Running $name"
       . $fetcher
-      echo
     done
   fi
 done

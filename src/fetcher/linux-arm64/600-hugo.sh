@@ -4,7 +4,7 @@ set -e
 set -u
 
 
-VERSION=${HUGO_VERSION:-"0.88.1"}
+VERSION=${HUGO_VERSION}
 
 # Download
 download hugo_${VERSION}_Linux-ARM64.tar.gz \

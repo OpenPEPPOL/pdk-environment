@@ -35,7 +35,10 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
+
+    - name: Load environment variables
+      uses: k15g/action-load-env@edge
 
     - name: Prepare files
       run: make linux-${{ matrix.arch }}
@@ -47,7 +50,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         file: target/pkg/linux-${{ matrix.arch }}.tar.gz
         name: pdk-environment-linux-${{ matrix.arch }}-${{ needs.init.outputs.version }}.tar.gz
-        label: Linux Package (${{ matrix.arch }})
+        label: Linux bundle (${{ matrix.arch }})
 
 
   macos:
@@ -63,7 +66,10 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
+
+    - name: Load environment variables
+      uses: k15g/action-load-env@edge
 
     - name: Prepare files
       run: make macos-${{ matrix.arch }}
@@ -75,7 +81,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         file: target/pkg/macos-${{ matrix.arch }}.tar.gz
         name: pdk-environment-macos-${{ matrix.arch }}-${{ needs.init.outputs.version }}.tar.gz
-        label: MacOS Package (${{ matrix.arch }})
+        label: MacOS bundle (${{ matrix.arch }})
 
 
   win64:
@@ -91,7 +97,10 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
+
+    - name: Load environment variables
+      uses: k15g/action-load-env@edge
 
     - name: Prepare files
       run: make win-${{ matrix.arch }}
@@ -103,4 +112,4 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         file: target/pkg/win-${{ matrix.arch }}.zip
         name: pdk-environment-win-${{ matrix.arch }}-${{ needs.init.outputs.version }}.zip
-        label: Windows Package (${{ matrix.arch }})
+        label: Windows bundle (${{ matrix.arch }})

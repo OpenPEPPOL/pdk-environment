@@ -7,7 +7,7 @@ PROJECT=$(_project)
 TARGET=$PROJECT/target
 DIST=$1
 
-echo "--- Package $DIST"
+echo "* Package $DIST"
 
 # Prepare folder
 mkdir -p $TARGET/pkg
@@ -16,5 +16,3 @@ test -e $TARGET/pkg/$DIST.zip && rm -rf $TARGET/pkg/$DIST.zip
 # Create zip
 cd $PROJECT/target/dist/$DIST
 zip -q9r $TARGET/pkg/$DIST.zip *
-
-echo

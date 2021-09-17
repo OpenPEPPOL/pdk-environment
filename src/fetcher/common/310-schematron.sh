@@ -4,7 +4,7 @@ set -e
 set -u
 
 
-VERSION=${SCHEMATRON_VERSION:-2017-02-09}
+VERSION=${SCHEMATRON_VERSION}
 
 # Create target folder
 mkdir -p $DIST/lib/schematron

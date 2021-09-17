@@ -7,7 +7,7 @@ PROJECT=$(_project)
 TARGET=$PROJECT/target
 DIST=$1
 
-echo "--- Package $DIST"
+echo "* Package $DIST"
 
 # Prepare folder
 mkdir -p $TARGET/pkg
@@ -19,5 +19,3 @@ tar rf $TARGET/pkg/$DIST.tar *
 
 # Compress tar
 gzip -9 $TARGET/pkg/$DIST.tar
-
-echo
