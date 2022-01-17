@@ -1,9 +1,8 @@
 PATH=$(shell pwd)/src/bin:$(shell echo $$PATH)
+include .env
+export 
 
-default: clean env linux macos win
-
-env:
-	@export $$(cat .env | xargs)
+default: clean linux macos win
 
 clean:
 	@rm -rf target
