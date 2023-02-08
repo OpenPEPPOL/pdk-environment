@@ -10,6 +10,6 @@ VERSION=${HUGO_VERSION}
 mkdir -p $DIST/lib/hugo
 
 download hugo_${VERSION}_macOS-64bit.tar.gz \
-  https://github.com/gohugoio/hugo/releases/download/v${VERSION}/hugo_${VERSION}_macOS-64bit.tar.gz
+  https://github.com/gohugoio/hugo/releases/download/v${VERSION}/hugo_${VERSION}_darwin-universal.tar.gz
 
 tar xzf $TMP/hugo_${VERSION}_macOS-64bit.tar.gz -C $DIST/lib/hugo
