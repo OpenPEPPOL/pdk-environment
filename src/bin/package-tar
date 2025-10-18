@@ -5,7 +5,7 @@ set -u
 
 PROJECT=$(_project)
 TARGET=$PROJECT/target
-DIST=$1
+DIST="pdk-environment"
 
 echo "* Package $DIST"
 
@@ -14,7 +14,7 @@ mkdir -p $TARGET/pkg
 test -e $TARGET/pkg/$DIST.tar.gz && rm -rf $TARGET/pkg/$DIST.tar.gz
 
 # Create tar
-cd $PROJECT/target/dist/$DIST
+cd $PROJECT/target/dist/
 tar rf $TARGET/pkg/$DIST.tar *
 
 # Compress tar
