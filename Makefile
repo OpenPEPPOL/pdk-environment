@@ -1,30 +1,13 @@
 PATH=$(shell pwd)/src/bin:$(shell echo $$PATH)
 include .env
-export 
+export
 
-default: clean linux macos win
+default: clean build
 
 clean:
-	@rm -rf target
+	@rm -rf target tmp
 
-linux: linux-amd64 linux-arm64
-
-linux-amd64:
-	@fetch linux-amd64 linux nix
-	@package-tar linux-amd64
-
-linux-arm64:
-	@fetch linux-arm64 linux nix
-	@package-tar linux-arm64
-
-macos: macos-amd64
-
-macos-amd64:
-	@fetch macos-amd64 macos nix
-	@package-tar macos-amd64
-
-win: win-amd64
-
-win-amd64:
-	@fetch win-amd64 win
-	@package-zip win-amd64
+build:
+	@$(CURDIR)/src/bin/fetch
+	@$(CURDIR)/src/bin/package-tar
+	@$(CURDIR)/src/bin/package-zip

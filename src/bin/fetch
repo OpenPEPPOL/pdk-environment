@@ -1,13 +1,12 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -euo pipefail
 
-# Variables to be used by fetchers
-PROJECT=$(_project)
-TARGET=$PROJECT/target
-TMP=$PROJECT/tmp
-DIST=$TARGET/dist/$1
+PROJECT="$(_project)"
+TARGET="$PROJECT/target"
+TMP="$PROJECT/tmp"
+DIST="$TARGET/dist/${1:-}"
 
-# Create inital folders
-mkdir -p $TARGET $TMP
+mkdir -p "$TARGET" "$TMP"
 
 # Function: download [filename] [url]
 download() {
@@ -19,13 +18,8 @@ download() {
 }
 
 # Run fetchers
-for arch in $@ common; do
-  if [ -e $PROJECT/src/fetcher/$arch ] && [ $(find $PROJECT/src/fetcher/$arch -name *.sh | wc -l) != "0" ]; then
-    for fetcher in $(ls $PROJECT/src/fetcher/$arch/*.sh); do
-      name=$(echo $fetcher | sed 's:\.sh$::')
-
-      echo "* Running $name"
-      . $fetcher
-    done
-  fi
+for script in "$PROJECT/src/fetcher"/*.sh; do
+  [ -e "$script" ] || continue        # nullglob guard (POSIX-compatible)
+  echo "* Running $script"
+  . "$script"                         # use `sh "$script"` if you don't need to source
 done
